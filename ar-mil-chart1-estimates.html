@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>تضارب تقديرات حجم الاقتصاد العسكري المصري</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{--blue:#378ADD;--coral:#D85A30;--teal:#1D9E75;--amber:#BA7517;--gray:#888780;}
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:"Tajawal",sans-serif;background:#fff;color:#2c2c2a;direction:rtl;}
+  #root{padding:clamp(12px,3vw,20px);}
+  .hdr{border-right:3px solid #D85A30;padding-right:10px;margin-bottom:10px;}
+  .tag{font-size:clamp(9px,2vw,10px);font-weight:700;letter-spacing:.06em;color:var(--gray);margin-bottom:2px;}
+  .title{font-size:clamp(13px,3.5vw,15px);font-weight:700;line-height:1.4;margin-bottom:2px;}
+  .subtitle{font-size:clamp(11px,2.5vw,12px);color:#5f5e5a;}
+  .callout{background:#f1efe8;border-right:3px solid #D85A30;padding:8px 11px;font-size:clamp(11px,2.5vw,12px);color:#5f5e5a;line-height:1.6;margin:9px 0;font-style:italic;}
+  .source{font-size:clamp(9px,2vw,10px);color:var(--gray);margin-top:10px;line-height:1.4;text-align:right;}
+  .cards{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;}
+  .card{flex:1;min-width:min(100px,44%);border-radius:8px;padding:clamp(9px,2.5vw,12px) clamp(10px,3vw,13px);}
+  @media(prefers-color-scheme:dark){
+    body{background:#1a1a18;color:#d3d1c7;}
+    .callout{background:#2c2c2a;color:#b4b2a9;}
+    .subtitle,.source{color:#b4b2a9;}
+  }
+</style>
+</head>
+<body>
+<div id="root">
+  <div class="hdr">
+    <p class="tag">زاوية ثالثة · إنفوجرافيك ① من ⑧</p>
+    <p class="title">تضارب تقديرات حجم الاقتصاد العسكري المصري</p>
+    <p class="subtitle">الفجوة بين 2% رسميًا و40% خارجيًا ليست خلافًا بل غياب بيانات</p>
+  </div>
+  <div class="callout">"الرئيس السيسي قال 2%، والتقديرات الخارجية تضعه بين 10 و40% — والفارق ليس اختلاف تقدير بل غياب بيانات يجعل أي رقم غير قابل للتحقق"</div>
+  
+<div style="position:relative;width:100%;height:clamp(195px,50vw,225px)"><canvas id="c"></canvas></div>
+<div style="margin-top:12px;background:#2c2c2a;border-radius:8px;padding:clamp(10px,3vw,13px)">
+  <p style="font-size:clamp(9px,2vw,10px);font-weight:700;color:#D85A30;margin-bottom:6px">&#9888; لماذا لا يمكن التحقق من أي رقم؟</p>
+  <p style="font-size:clamp(10px,2.5vw,11px);color:rgba(255,255,255,.8);line-height:1.6">شركات الجيش لا تنشر ميزانياتها، والموازنة العامة تُدرجها برقم واحد غير مفصَّل، ولا جهة رقابية مستقلة تملك الوصول إليها</p>
+</div>
+<script>
+(function(){
+  var dk=matchMedia("(prefers-color-scheme:dark)").matches;
+  var tc=dk?"#b4b2a9":"#5f5e5a",gc=dk?"rgba(255,255,255,.08)":"rgba(0,0,0,.07)";
+  var teal=dk?"#5DCAA5":"#1D9E75",blue=dk?"#85B7EB":"#378ADD",
+      coral=dk?"#F0997B":"#D85A30",amber=dk?"#FAC775":"#BA7517";
+  var labels=[
+    ["السيسي","(ديسمبر 2016)"],
+    ["الجزيرة","الإنجليزية 2013"],
+    ["تقديرات","خارجية (أعلى)"],
+    ["ادعاءات","أخرى"]
+  ];
+  var mins=[1.5,10,10,20];
+  var maxs=[2,40,40,50];
+  new Chart(document.getElementById("c"),{
+    type:"bar",
+    data:{
+      labels:labels,
+      datasets:[
+        {label:"الحد الأدنى",data:mins,backgroundColor:[teal,blue,blue,coral],borderWidth:0,borderRadius:3},
+        {label:"الحد الأعلى",data:maxs,backgroundColor:[teal+"88",blue+"88",blue+"88",coral+"88"],borderWidth:0,borderRadius:3}
+      ]
+    },
+    options:{responsive:true,maintainAspectRatio:false,animation:{duration:900,easing:"easeOutQuart"},
+    plugins:{
+      legend:{display:true,position:"top",align:"end",labels:{color:tc,font:{size:10,family:"Tajawal"},boxWidth:10,boxHeight:10,padding:10}},
+      tooltip:{backgroundColor:dk?"#2c2c2a":"#fff",borderColor:dk?"rgba(255,255,255,.1)":"rgba(0,0,0,.08)",borderWidth:1,titleColor:dk?"#d3d1c7":"#2c2c2a",bodyColor:tc,padding:10,titleFont:{family:"Tajawal"},bodyFont:{family:"Tajawal"},callbacks:{label:function(c){return c.dataset.label+": "+c.raw+"%";}}}
+    },
+    scales:{x:{ticks:{color:tc,font:{size:9,family:"Tajawal"}},grid:{display:false},border:{color:gc}},
+    y:{ticks:{color:tc,font:{size:10,family:"Tajawal"},callback:function(v){return v+"%";}},grid:{color:gc},border:{display:false}}}}
+  });
+})();
+</script>
+  <p class="source">المصدر: تصريح السيسي في افتتاح مصنع أبو رواش 2016 / الجزيرة الإنجليزية 2013</p>
+</div>
+<script>
+(function(){
+  function notify(){var h=document.getElementById("root").offsetHeight;window.parent.postMessage({type:"chartResize",height:h},"*");}
+  setTimeout(notify,1400);window.addEventListener("resize",notify);
+  try{new ResizeObserver(function(){setTimeout(notify,80);}).observe(document.body);}catch(e){}
+})();
+</script>
+</body></html>

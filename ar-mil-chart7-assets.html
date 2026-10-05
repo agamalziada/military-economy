@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>أبرز أصول الجيش الزراعية والصناعية المحددة بالأرقام</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{--blue:#378ADD;--coral:#D85A30;--teal:#1D9E75;--amber:#BA7517;--gray:#888780;}
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:"Tajawal",sans-serif;background:#fff;color:#2c2c2a;direction:rtl;}
+  #root{padding:clamp(12px,3vw,20px);}
+  .hdr{border-right:3px solid #378ADD;padding-right:10px;margin-bottom:10px;}
+  .tag{font-size:clamp(9px,2vw,10px);font-weight:700;letter-spacing:.06em;color:var(--gray);margin-bottom:2px;}
+  .title{font-size:clamp(13px,3.5vw,15px);font-weight:700;line-height:1.4;margin-bottom:2px;}
+  .subtitle{font-size:clamp(11px,2.5vw,12px);color:#5f5e5a;}
+  .callout{background:#f1efe8;border-right:3px solid #378ADD;padding:8px 11px;font-size:clamp(11px,2.5vw,12px);color:#5f5e5a;line-height:1.6;margin:9px 0;font-style:italic;}
+  .source{font-size:clamp(9px,2vw,10px);color:var(--gray);margin-top:10px;line-height:1.4;text-align:right;}
+  .cards{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;}
+  .card{flex:1;min-width:min(100px,44%);border-radius:8px;padding:clamp(9px,2.5vw,12px) clamp(10px,3vw,13px);}
+  @media(prefers-color-scheme:dark){
+    body{background:#1a1a18;color:#d3d1c7;}
+    .callout{background:#2c2c2a;color:#b4b2a9;}
+    .subtitle,.source{color:#b4b2a9;}
+  }
+</style>
+</head>
+<body>
+<div id="root">
+  <div class="hdr">
+    <p class="tag">زاوية ثالثة · إنفوجرافيك ⑦ من ⑧</p>
+    <p class="title">أبرز أصول الجيش الزراعية والصناعية المحددة بالأرقام</p>
+    <p class="subtitle">من 110 ألف فدان إلى 120 مليون بيضة — أصول بلا ميزانيات منشورة</p>
+  </div>
+  <div class="callout">"من 110 ألف فدان في شرق العوينات إلى 120 مليون بيضة سنويًا، أصول يملكها جهاز يُدرَج في الموازنة برقم واحد"</div>
+  
+<div style="display:flex;flex-direction:column;gap:7px;margin-bottom:12px">
+  <div style="background:#eef4fb;border-radius:8px;padding:clamp(9px,2.5vw,11px);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:4px">
+    <p style="font-size:clamp(10px,2.8vw,12px);font-weight:600;color:#2c2c2a">الشركة الوطنية لاستصلاح الصحراء</p>
+    <p style="font-size:clamp(11px,3vw,13px);font-weight:800;color:#378ADD">110,000 فدان <span style="font-size:clamp(9px,2vw,10px);font-weight:400;color:#888780">(شرق العوينات)</span></p>
+  </div>
+  <div style="background:#eef4fb;border-radius:8px;padding:clamp(9px,2.5vw,11px);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:4px">
+    <p style="font-size:clamp(10px,2.8vw,12px);font-weight:600;color:#2c2c2a">مزرعة وادي الشيح</p>
+    <p style="font-size:clamp(11px,3vw,13px);font-weight:800;color:#378ADD">10,000 فدان <span style="font-size:clamp(9px,2vw,10px);font-weight:400;color:#888780">(أسيوط)</span></p>
+  </div>
+  <div style="background:#eef4fb;border-radius:8px;padding:clamp(9px,2.5vw,11px);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:4px">
+    <p style="font-size:clamp(10px,2.8vw,12px);font-weight:600;color:#2c2c2a">استزراع سمكي غليون</p>
+    <p style="font-size:clamp(11px,3vw,13px);font-weight:800;color:#378ADD">2,815 فدان <span style="font-size:clamp(9px,2vw,10px);font-weight:400;color:#888780">+ 1,265 حوضًا</span></p>
+  </div>
+  <div style="background:#fdf6e8;border-radius:8px;padding:clamp(9px,2.5vw,11px);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:4px">
+    <p style="font-size:clamp(10px,2.8vw,12px);font-weight:600;color:#2c2c2a">مجمع البيض (طاقة إنتاجية)</p>
+    <p style="font-size:clamp(11px,3vw,13px);font-weight:800;color:#BA7517">120 مليون بيضة/سنة</p>
+  </div>
+  <div style="background:#fdf6e8;border-radius:8px;padding:clamp(9px,2.5vw,11px);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:4px">
+    <p style="font-size:clamp(10px,2.8vw,12px);font-weight:600;color:#2c2c2a">مكرونة كوين</p>
+    <p style="font-size:clamp(11px,3vw,13px);font-weight:800;color:#BA7517">150,000 طن/سنة</p>
+  </div>
+  <div style="background:#fdf6e8;border-radius:8px;padding:clamp(9px,2.5vw,11px);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:4px">
+    <p style="font-size:clamp(10px,2.8vw,12px);font-weight:600;color:#2c2c2a">العريش للأسمنت</p>
+    <p style="font-size:clamp(11px,3vw,13px);font-weight:800;color:#BA7517">3.2 مليون طن/سنة</p>
+  </div>
+</div>
+<div style="background:#2c2c2a;border-radius:7px;padding:9px 12px">
+  <p style="font-size:clamp(11px,2.8vw,12px);color:rgba(255,255,255,.8)">&#9888; كل هذه الأصول يملكها جهاز <strong style="color:#378ADD">يُدرَج في الموازنة العامة برقم واحد</strong> دون تفاصيل، ولا رقابة برلمانية مستقلة على حساباته</p>
+</div>
+  <p class="source">المصدر: بيانات جهاز مشروعات الخدمة الوطنية / قرارات جمهورية</p>
+</div>
+<script>
+(function(){
+  function notify(){var h=document.getElementById("root").offsetHeight;window.parent.postMessage({type:"chartResize",height:h},"*");}
+  setTimeout(notify,1400);window.addEventListener("resize",notify);
+  try{new ResizeObserver(function(){setTimeout(notify,80);}).observe(document.body);}catch(e){}
+})();
+</script>
+</body></html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>IMF Loan Size: 2016 vs. 2022</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<style>
+  :root{--blue:#378ADD;--coral:#D85A30;--teal:#1D9E75;--amber:#BA7517;--gray:#888780;}
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:#fff;color:#2c2c2a;}
+  #root{padding:clamp(12px,3vw,20px);}
+  .hdr{border-left:3px solid #D85A30;padding-left:10px;margin-bottom:10px;}
+  .tag{font-size:clamp(9px,2vw,10px);font-weight:700;letter-spacing:.07em;color:var(--gray);margin-bottom:2px;text-transform:uppercase;}
+  .title{font-size:clamp(13px,3.5vw,15px);font-weight:600;line-height:1.35;margin-bottom:2px;}
+  .subtitle{font-size:clamp(11px,2.5vw,12px);color:#5f5e5a;}
+  .callout{background:#f1efe8;border-left:3px solid #D85A30;padding:8px 11px;font-size:clamp(11px,2.5vw,12px);color:#5f5e5a;line-height:1.55;margin:9px 0;font-style:italic;}
+  .source{font-size:clamp(9px,2vw,10px);color:var(--gray);margin-top:10px;line-height:1.4;}
+  .cards{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;}
+  .card{flex:1;min-width:min(100px,44%);border-radius:8px;padding:clamp(9px,2.5vw,12px) clamp(10px,3vw,13px);}
+  @media(prefers-color-scheme:dark){
+    body{background:#1a1a18;color:#d3d1c7;}
+    .callout{background:#2c2c2a;color:#b4b2a9;}
+    .subtitle,.source{color:#b4b2a9;}
+  }
+</style>
+</head>
+<body>
+<div id="root">
+  <div class="hdr">
+    <p class="tag">Zawia3 &middot; Chart 5 of 8</p>
+    <p class="title">IMF Loan Size: 2016 vs. 2022</p>
+    <p class="subtitle">In six years the loan shrank 75% as the pound lost half its value</p>
+  </div>
+  <div class="callout">"The loan that was $12 billion in 2016 became $3 billion in 2022 with heavier conditions, while the pound fell from EGP 15.7 to nearly EGP 30 per dollar"</div>
+  
+<div class="cards" style="margin-bottom:14px">
+  <div class="card" style="background:#edf7f3;text-align:center">
+    <p style="font-size:clamp(9px,2.2vw,10px);color:#0F6E56;font-weight:600;margin-bottom:3px">2016 IMF loan</p>
+    <p style="font-size:clamp(22px,6vw,28px);font-weight:800;color:#1D9E75" id="v1">0</p>
+    <p style="font-size:clamp(10px,2.5vw,11px);color:#888780;margin-top:1px">USD billion</p>
+  </div>
+  <div class="card" style="background:#faece7;text-align:center">
+    <p style="font-size:clamp(9px,2.2vw,10px);color:#993C1D;font-weight:600;margin-bottom:3px">2022 IMF loan</p>
+    <p style="font-size:clamp(22px,6vw,28px);font-weight:800;color:#D85A30" id="v2">0</p>
+    <p style="font-size:clamp(10px,2.5vw,11px);color:#888780;margin-top:1px">USD billion</p>
+  </div>
+  <div class="card" style="background:#faece7;text-align:center">
+    <p style="font-size:clamp(9px,2.2vw,10px);color:#993C1D;margin-bottom:3px">Reduction</p>
+    <p style="font-size:clamp(22px,6vw,28px);font-weight:800;color:#D85A30">-75%</p>
+    <p style="font-size:clamp(10px,2.5vw,11px);color:#888780;margin-top:1px">in loan size</p>
+  </div>
+</div>
+<div style="position:relative;width:100%;height:clamp(160px,42vw,185px)"><canvas id="c"></canvas></div>
+<div style="margin-top:10px;background:#f1efe8;border-radius:7px;padding:9px 12px;display:flex;gap:10px;flex-wrap:wrap">
+  <div style="flex:1;min-width:min(100px,44%)">
+    <p style="font-size:clamp(9px,2.2vw,10px);color:#5f5e5a;margin-bottom:2px">USD/EGP rate in 2016</p>
+    <p style="font-size:clamp(15px,4.5vw,19px);font-weight:800;color:#1D9E75">EGP 15.7</p>
+  </div>
+  <div style="flex:1;min-width:min(100px,44%)">
+    <p style="font-size:clamp(9px,2.2vw,10px);color:#5f5e5a;margin-bottom:2px">USD/EGP rate 2022/23</p>
+    <p style="font-size:clamp(15px,4.5vw,19px);font-weight:800;color:#D85A30">~EGP 30</p>
+  </div>
+</div>
+<script>
+(function(){
+  var dk=matchMedia("(prefers-color-scheme:dark)").matches;
+  var tc=dk?"#b4b2a9":"#5f5e5a",gc=dk?"rgba(255,255,255,.08)":"rgba(0,0,0,.07)";
+  var teal=dk?"#5DCAA5":"#1D9E75",coral=dk?"#F0997B":"#D85A30";
+  new Chart(document.getElementById("c"),{type:"bar",
+    data:{labels:["2016","2022"],datasets:[{data:[12,3],backgroundColor:[teal,coral],borderWidth:0,borderRadius:6}]},
+    options:{responsive:true,maintainAspectRatio:false,animation:{duration:900,easing:"easeOutQuart",delay:function(c){return c.dataIndex*200;}},
+    plugins:{legend:{display:false},tooltip:{backgroundColor:dk?"#2c2c2a":"#fff",borderColor:dk?"rgba(255,255,255,.1)":"rgba(0,0,0,.08)",borderWidth:1,titleColor:dk?"#d3d1c7":"#2c2c2a",bodyColor:tc,padding:10,callbacks:{label:function(c){return "$"+c.raw+"B";}}}},
+    scales:{x:{ticks:{color:tc,font:{size:12,weight:"700"}},grid:{display:false},border:{color:gc}},
+    y:{ticks:{color:tc,font:{size:10},callback:function(v){return "$"+v+"B";}},grid:{color:gc},border:{display:false}}}}
+  });
+  var s=null;
+  function cu(ts){if(!s)s=ts;var p=Math.min((ts-s)/800,1),e=1-Math.pow(1-p,3);
+    document.getElementById("v1").textContent=(e*12).toFixed(0);
+    document.getElementById("v2").textContent=(e*3).toFixed(0);
+    if(p<1)requestAnimationFrame(cu);else{document.getElementById("v1").textContent="12";document.getElementById("v2").textContent="3";}
+  }
+  setTimeout(function(){requestAnimationFrame(cu);},100);
+})();
+</script>
+  <p class="source">Source: IMF / parallel market rates</p>
+</div>
+<script>
+(function(){
+  function notify(){var h=document.getElementById("root").offsetHeight;window.parent.postMessage({type:"chartResize",height:h},"*");}
+  setTimeout(notify,1400);window.addEventListener("resize",notify);
+  try{new ResizeObserver(function(){setTimeout(notify,80);}).observe(document.body);}catch(e){}
+})();
+</script>
+</body></html>
